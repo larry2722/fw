@@ -13,6 +13,8 @@ import javax.persistence.PreUpdate;
 @MappedSuperclass
 public abstract class IdEntity<ID extends Serializable> extends AbstractEntity<ID> {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private ID id;

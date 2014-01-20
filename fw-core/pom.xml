@@ -188,6 +188,16 @@
 			<artifactId>joda-time</artifactId>
 		</dependency>
 
+		<!-- MyBatis 相关jar包 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+
 		<!-- hibernate相关jar包 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
