@@ -8,5 +8,5 @@
 package org.larry.fw.module.datasource;
 
 public enum AvailableDataSources {
-	DATABASE_1
+	DATABASE_1, LOG
 }

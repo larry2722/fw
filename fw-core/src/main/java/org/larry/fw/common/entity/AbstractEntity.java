@@ -7,6 +7,8 @@ import org.springframework.data.domain.Persistable;
 
 public abstract class AbstractEntity<ID extends Serializable> implements Persistable<ID>, Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	public abstract ID getId();
 	
 	public abstract void setId(final ID id);

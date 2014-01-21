@@ -15,10 +15,10 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.jdbc.datasource.AbstractDataSource;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.util.Assert;
 
-public class DatasourceRouter extends AbstractDataSource implements InitializingBean {
+public class TransactionAwareDataSourceRouterProxy extends TransactionAwareDataSourceProxy implements InitializingBean {
 	
 	private Map<AvailableDataSources, Object> targetDataSources;
 	private DataSource defaultTargetDataSource;
@@ -49,7 +49,11 @@ public class DatasourceRouter extends AbstractDataSource implements Initializing
 
 	@Override
 	public Connection getConnection() throws SQLException {
-		return determineCurrentLookupKey().getConnection();
+		DataSource ds = determineCurrentLookupKey();
+		Assert.state(ds != null, "'targetDataSource' is required");
+		// see: http://blog.csdn.net/dingqinghu/article/details/8982298
+		// 直接通过数据源获取连接（jdbcTemplate.getDataSource().getConnection())，需要显式释放，不然会出现连接泄漏问题
+		return getTransactionAwareConnectionProxy(ds);
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class DatasourceRouter extends AbstractDataSource implements Initializing
 	}
 
 	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void afterPropertiesSet() {
 		if (this.targetDataSources == null) {
 			throw new IllegalArgumentException("Property 'targetDataSources' is required");
 		}

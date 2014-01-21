@@ -17,8 +17,8 @@
  */
 package org.larry.fw.module.logger;
 
-import com.aicent.wifi.riswifi.module.utils.NetUtils;
-import com.aicent.wifi.riswifi.module.utils.Version;
+import org.larry.fw.module.utils.NetUtils;
+import org.larry.fw.module.utils.Version;
 
 public class FWLogger implements Logger {
 	

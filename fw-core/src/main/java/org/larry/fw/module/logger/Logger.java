@@ -30,24 +30,40 @@ public interface Logger {
 	void debug(Throwable e);
 
 	void debug(String msg, Throwable e);
+	
+	void debug(String format, Object arg);
+	
+	void debug(String format, Object...arguments);
 
 	void info(String msg);
 
 	void info(Throwable e);
 
 	void info(String msg, Throwable e);
+	
+	void info(String format, Object arg);
+	
+	void info(String format, Object...arguments);
 
 	void warn(String msg);
 
 	void warn(Throwable e);
 
 	void warn(String msg, Throwable e);
+	
+	void warn(String format, Object arg);
+	
+	void warn(String format, Object...arguments);	
 
 	void error(String msg);
 
 	void error(Throwable e);
 
 	void error(String msg, Throwable e);
+	
+	void error(String format, Object arg);
+	
+	void error(String format, Object...arguments);
 
 	boolean isTraceEnabled();
 

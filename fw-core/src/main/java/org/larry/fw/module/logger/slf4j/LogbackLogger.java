@@ -19,7 +19,7 @@ package org.larry.fw.module.logger.slf4j;
 
 import java.io.Serializable;
 
-import com.aicent.wifi.riswifi.module.logger.Logger;
+import org.larry.fw.module.logger.Logger;
 
 public class LogbackLogger implements Logger, Serializable {
 
@@ -60,6 +60,16 @@ public class LogbackLogger implements Logger, Serializable {
 	public void debug(String msg, Throwable e) {
 		logger.debug(msg, e);
 	}
+	
+	@Override
+	public void debug(String format, Object arg) {
+		logger.debug(format, arg);
+	}
+	
+	@Override
+	public void debug(String format, Object...arguments) {
+		logger.debug(format, arguments);
+	}
 
 	@Override
 	public void info(String msg) {
@@ -74,6 +84,16 @@ public class LogbackLogger implements Logger, Serializable {
 	@Override
 	public void info(String msg, Throwable e) {
 		logger.info(msg, e);
+	}
+	
+	@Override
+	public void info(String format, Object arg) {
+		logger.info(format, arg);
+	}
+	
+	@Override
+	public void info(String format, Object...arguments) {
+		logger.info(format, arguments);
 	}
 
 	@Override
@@ -90,6 +110,16 @@ public class LogbackLogger implements Logger, Serializable {
 	public void warn(String msg, Throwable e) {
 		logger.warn(msg, e);
 	}
+	
+	@Override
+	public void warn(String format, Object arg) {
+		logger.warn(format, arg);
+	}
+	
+	@Override
+	public void warn(String format, Object...arguments) {
+		logger.warn(format, arguments);
+	}
 
 	@Override
 	public void error(String msg) {
@@ -104,6 +134,16 @@ public class LogbackLogger implements Logger, Serializable {
 	@Override
 	public void error(String msg, Throwable e) {
 		logger.error(msg, e);
+	}
+	
+	@Override
+	public void error(String format, Object arg) {
+		logger.error(format, arg);
+	}
+	
+	@Override
+	public void error(String format, Object...arguments) {
+		logger.error(format, arguments);
 	}
 
 	@Override

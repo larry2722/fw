@@ -14,22 +14,24 @@
 	<!-- 扫描注解Bean -->
 	<context:component-scan base-package="org.larry.fw.showcase.dao.impl.*,org.larry.fw.showcase.service.impl.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 	
 	<!-- 开启AOP监听 只对当前配置文件有效 -->
 	<aop:aspectj-autoproxy expose-proxy="true" />
 	
-	<bean id="dataSource" class="org.larry.fw.module.datasource.DatasourceRouter">
+	<bean id="dataSource" class="org.larry.fw.module.datasource.TransactionAwareDataSourceRouterProxy">
 		<property name="targetDataSources">
 			<map key-type="org.larry.fw.module.datasource.AvailableDataSources">
 				<entry key="DATABASE_1" value-ref="db1DataSource"/>
+				<entry key="LOG" value-ref="logDataSource"/>
 			</map>
 		</property>
 		<property name="defaultTargetDataSource" ref="db1DataSource" />
 	</bean>
 	
 	<!-- MyBatis configuration -->
-	<!-- <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="configLocation" value="classpath:/META-INF/configuration/mybatis-config.xml"/>
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
@@ -43,7 +45,7 @@
 	  	 <constructor-arg ref="sessionFactory" />
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	  <property name="dataSource" ref="dataSource" />
 	</bean> -->
 	
@@ -99,10 +101,10 @@
         base-package:扫描的包
         repository-impl-postfix:仓库自定义实现类型的后缀  自动扫描并添加到接口的实现
         factory-class 仓库接口的实现工厂
-
     -->
+    <!-- Spring Data Jpa配置 -->
     <jpa:repositories
-            base-package="com.sishuok.es.**.repository"
+            base-package="org.larry.fw.**.repository"
             repository-impl-postfix="Impl"
             factory-class="org.larry.fw.common.repository.support.SimpleBaseRepositoryFactoryBean"
             entity-manager-factory-ref="entityManagerFactory"
@@ -149,6 +151,12 @@
 
         <!-- 配置监控统计拦截的filters -->
         <property name="filters" value="${druid.filters}" />
+    </bean>
+    
+    <bean id="logDataSource" parent="db1DataSource">
+    	<property name="url" value="${connection.log.url}"/>
+        <property name="username" value="${connection.log.username}"/>
+        <property name="password" value="${connection.log.password}"/>
     </bean>
     
      <!-- 国际化的消息资源文件（本系统中主要用于显示/错误消息定制） -->
