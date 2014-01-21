@@ -61,6 +61,8 @@
 		<javassist.version>3.18.1-GA</javassist.version>
 
 		<shiro.version>1.2.2</shiro.version>
+		
+		<mysql.version>5.1.27</mysql.version>
 	</properties>
 
 	<developers>
@@ -715,6 +717,11 @@
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-spring</artifactId>
 				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -39,7 +39,7 @@ class SimpleBaseRepositoryFactory<E, ID extends Serializable> extends JpaReposit
 	}
 	
 	protected Class<?> getRepositoryBaseClass(RepositoryMetadata metadata) {
-		// TODO: 
+		// TODO: EnableQueryCache
         return super.getRepositoryBaseClass(metadata);
     }
 
