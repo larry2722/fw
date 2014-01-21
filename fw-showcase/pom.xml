@@ -14,4 +14,10 @@
 			<artifactId>fw-core</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>development</id>
+		</profile>
+	</profiles>
 </project>

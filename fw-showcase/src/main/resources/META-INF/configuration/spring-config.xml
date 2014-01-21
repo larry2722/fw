@@ -205,10 +205,10 @@
     <import resource="META-INF/configuration/spring-config-shiro.xml"/>
     <import resource="META-INF/configuration/spring-config-monitor.xml"/>
 	
-	<beans profile="location">
-		<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/META-INF/configuration/environments/application.location.properties"/>	
+	<beans profile="development">
+		<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/META-INF/configuration/environments/application.development.properties"/>	
 		<jdbc:initialize-database data-source="db1DataSource" ignore-failures="ALL">
-			<jdbc:script location="classpath:META-INF/configuration/sql/schema.sql" />
+			<jdbc:script location="classpath:META-INF/configuration/sql/schema/schema.sql" />
 		</jdbc:initialize-database>	
 	</beans>
 </beans>
