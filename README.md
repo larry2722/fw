@@ -2,14 +2,14 @@ larry.li spring framework
 ==
 <per>
 
-	/**<br/>
-	 * Copyright:   Copyright (c) 2014<br/>
-	 * Company:     LuckyStar Common Freamwork<br/>
-	 * @author:     Larry.Li  <br/>
-	 * @version:    v1.0.0<br/>
-	 * @email:		libin2722@sohu.com<br/>
-	 * QQ:			33614814<br/>
-	 */<br/>
+	/**
+	 * Copyright:   Copyright (c) 2014
+	 * Company:     LuckyStar Common Freamwork
+	 * @author:     Larry.Li  
+	 * @version:    v1.0.0
+	 * @email:		libin2722@sohu.com
+	 * QQ:			33614814
+	 */
 	
 	https://github.com/larry2722/fw
 	
