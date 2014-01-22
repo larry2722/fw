@@ -13,7 +13,6 @@ https://github.com/larry2722/fw<br/>
 
 <per>
 	1、使用maven命令创建数据库： mvn db:create
-	
 	2、多数据源配置，支持动态路由数据源
 		TransactionAwareDataSourceRouterProxy extends TransactionAwareDataSourceProxy
 </per>
