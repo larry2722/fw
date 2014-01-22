@@ -733,7 +733,6 @@
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>opensymphony</groupId>
 				<artifactId>sitemesh</artifactId>
