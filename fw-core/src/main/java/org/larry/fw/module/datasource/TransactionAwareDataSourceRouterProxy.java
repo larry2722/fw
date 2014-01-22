@@ -34,7 +34,7 @@ public class TransactionAwareDataSourceRouterProxy extends TransactionAwareDataS
 		this.defaultTargetDataSource = defaultTargetDataSource;
 	}
 
-	private DataSource determineCurrentLookupKey() {
+	public DataSource getTargetDataSource() {
 		Assert.notNull(this.resolvedDataSources, "DataSource router not initialized");
 		AvailableDataSources lookupKey = DatasourceProvider.getDataSource();
 		DataSource dataSource = this.resolvedDataSources.get(lookupKey);
@@ -49,7 +49,7 @@ public class TransactionAwareDataSourceRouterProxy extends TransactionAwareDataS
 
 	@Override
 	public Connection getConnection() throws SQLException {
-		DataSource ds = determineCurrentLookupKey();
+		DataSource ds = getTargetDataSource();
 		Assert.state(ds != null, "'targetDataSource' is required");
 		// see: http://blog.csdn.net/dingqinghu/article/details/8982298
 		// 直接通过数据源获取连接（jdbcTemplate.getDataSource().getConnection())，需要显式释放，不然会出现连接泄漏问题
@@ -58,7 +58,7 @@ public class TransactionAwareDataSourceRouterProxy extends TransactionAwareDataS
 
 	@Override
 	public Connection getConnection(String username, String password) throws SQLException {
-		return determineCurrentLookupKey().getConnection(username, password);
+		return getTargetDataSource().getConnection(username, password);
 	}
 
 	@Override

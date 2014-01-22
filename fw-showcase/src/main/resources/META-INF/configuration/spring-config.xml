@@ -200,10 +200,10 @@
         <property name="arguments" ref="entityManagerFactory"/>
     </bean> -->
     
-    <import resource="META-INF/configuration/spring-config-cache.xml"/>
-    <import resource="META-INF/configuration/spring-config-task.xml"/>
-    <import resource="META-INF/configuration/spring-config-shiro.xml"/>
-    <import resource="META-INF/configuration/spring-config-monitor.xml"/>
+    <import resource="classpath:META-INF/configuration/spring-config-cache.xml"/>
+    <import resource="classpath:META-INF/configuration/spring-config-task.xml"/>
+    <import resource="classpath:META-INF/configuration/spring-config-shiro.xml"/>
+    <import resource="classpath:META-INF/configuration/spring-config-monitor.xml"/>
 	
 	<beans profile="development">
 		<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/META-INF/configuration/environments/application.development.properties"/>	

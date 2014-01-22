@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import com.aicent.wifi.riswifi.module.logger.slf4j.LogbackLoggerAdapter;
+import org.larry.fw.module.logger.slf4j.LogbackLoggerAdapter;
 
 public class LoggerFactory {
 

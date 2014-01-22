@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>fw-showcase</artifactId>
-	
+
 	<properties>
 		<mysql.version>5.1.27</mysql.version>
 	</properties>
@@ -68,6 +68,34 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>showcase-jar-copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<delete>
+									<fileset dir="${basedir}/src/main/webapp/WEB-INF/lib">
+										<exclude name="**/*.*" />
+									</fileset>
+								</delete>
+								<copy todir="${basedir}/src/main/webapp/WEB-INF/lib">
+									<fileset dir="${basedir}/target/${project.artifactId}/WEB-INF/lib">
+										<include name="**/*.jar" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<resources>
@@ -105,4 +133,5 @@
 			</properties>
 		</profile>
 	</profiles>
+	<packaging>war</packaging>
 </project>

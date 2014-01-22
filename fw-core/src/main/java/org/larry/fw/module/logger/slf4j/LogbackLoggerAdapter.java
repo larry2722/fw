@@ -20,11 +20,10 @@ package org.larry.fw.module.logger.slf4j;
 import java.io.File;
 import java.util.List;
 
+import org.larry.fw.module.logger.Level;
+import org.larry.fw.module.logger.Logger;
+import org.larry.fw.module.logger.LoggerAdapter;
 import org.slf4j.LoggerFactory;
-
-import com.aicent.wifi.riswifi.module.logger.Level;
-import com.aicent.wifi.riswifi.module.logger.Logger;
-import com.aicent.wifi.riswifi.module.logger.LoggerAdapter;
 
 import ch.qos.logback.classic.LoggerContext;
 

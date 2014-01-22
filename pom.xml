@@ -22,6 +22,9 @@
 		<jdk.version>1.7</jdk.version>
 
 		<spring.version>4.0.0.RELEASE</spring.version>
+
+		<spring.aspects.version>3.2.4.RELEASE</spring.aspects.version>
+
 		<spring.data.jpa.version>1.4.3.RELEASE</spring.data.jpa.version>
 
 		<servlet.version>3.1.0</servlet.version>
@@ -30,7 +33,7 @@
 		<standard.version>1.1.2</standard.version>
 
 		<aspectj.version>1.7.3</aspectj.version>
-		<druid.version>0.2.26</druid.version>
+		<druid.version>0.2.25</druid.version>
 		<slf4j.version>1.7.5</slf4j.version>
 		<logback.version>1.0.13</logback.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
@@ -61,8 +64,10 @@
 		<javassist.version>3.18.1-GA</javassist.version>
 
 		<shiro.version>1.2.2</shiro.version>
-		
+
 		<mysql.version>5.1.27</mysql.version>
+
+		<sitemesh.version>2.4.2</sitemesh.version>
 	</properties>
 
 	<developers>
@@ -397,6 +402,11 @@
 				<artifactId>spring-tx</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.aspects.version}</version>
+			</dependency>
 			<!-- spring webmvc相关jar包 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -722,6 +732,12 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>opensymphony</groupId>
+				<artifactId>sitemesh</artifactId>
+				<version>${sitemesh.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

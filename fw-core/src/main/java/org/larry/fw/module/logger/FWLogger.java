@@ -87,6 +87,22 @@ public class FWLogger implements Logger {
 		} catch (Throwable t) {
 		}
 	}
+	
+	@Override
+	public void debug(String format, Object arg) {
+		try {
+			logger.debug(appendContextMessage(format), arg);
+		} catch (Throwable t) {
+		}
+	}
+
+	@Override
+	public void debug(String format, Object... arguments) {
+		try {
+			logger.debug(appendContextMessage(format), arguments);
+		} catch (Throwable t) {
+		}
+	}
 
 	@Override
 	public void info(String msg) {
@@ -108,6 +124,22 @@ public class FWLogger implements Logger {
 	public void info(String msg, Throwable e) {
 		try {
 			logger.info(appendContextMessage(msg), e);
+		} catch (Throwable t) {
+		}
+	}
+	
+	@Override
+	public void info(String format, Object arg) {
+		try {
+			logger.info(appendContextMessage(format), arg);
+		} catch (Throwable t) {
+		}
+	}
+
+	@Override
+	public void info(String format, Object... arguments) {
+		try {
+			logger.info(appendContextMessage(format), arguments);
 		} catch (Throwable t) {
 		}
 	}
@@ -135,6 +167,22 @@ public class FWLogger implements Logger {
 		} catch (Throwable t) {
 		}
 	}
+	
+	@Override
+	public void warn(String format, Object arg) {
+		try {
+			logger.warn(appendContextMessage(format), arg);
+		} catch (Throwable t) {
+		}
+	}
+
+	@Override
+	public void warn(String format, Object... arguments) {
+		try {
+			logger.warn(appendContextMessage(format), arguments);
+		} catch (Throwable t) {
+		}
+	}
 
 	@Override
 	public void error(String msg) {
@@ -156,6 +204,22 @@ public class FWLogger implements Logger {
 	public void error(String msg, Throwable e) {
 		try {
 			logger.error(appendContextMessage(msg), e);
+		} catch (Throwable t) {
+		}
+	}
+	
+	@Override
+	public void error(String format, Object arg) {
+		try {
+			logger.error(appendContextMessage(format), arg);
+		} catch (Throwable t) {
+		}
+	}
+
+	@Override
+	public void error(String format, Object... arguments) {
+		try {
+			logger.error(appendContextMessage(format), arguments);
 		} catch (Throwable t) {
 		}
 	}
