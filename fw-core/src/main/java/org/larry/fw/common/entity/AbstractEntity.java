@@ -1,3 +1,10 @@
+/**  
+ * Copyright:   Copyright (c) 2014
+ * Company:     LuckyStar Common Freamwork
+ * @author:     Larry.Li  
+ * @version:    v1.0.0
+ * Create Date: 2014年1月21日 下午3:42:45
+ */
 package org.larry.fw.common.entity;
 
 import java.io.Serializable;

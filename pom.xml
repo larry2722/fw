@@ -17,6 +17,7 @@
 		<module>fw-showcase</module>
 		<module>fw-extension-log</module>
 		<module>fw-common</module>
+		<module>fw-codegen</module>
 	</modules>
 
 	<properties>

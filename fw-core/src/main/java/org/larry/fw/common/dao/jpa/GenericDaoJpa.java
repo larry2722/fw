@@ -24,19 +24,20 @@ public class GenericDaoJpa<E extends AbstractEntity<ID>, ID extends Serializable
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	private RepositoryHelper repositoryHelper;
+	// 这里可以扩展成继承EntityManager然后实现其所有方法，在其方法上扩展
+	private RepositoryHelper<E, ID> repositoryHelper;
 	private Class<E> entityClass;
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		entityClass = ReflectUtils.findParameterizedType(getClass(), 0);
-		repositoryHelper = new RepositoryHelper(entityClass);
+		repositoryHelper = new RepositoryHelper<E, ID>(entityClass);
+		logger.debug(".......");
 	}
 	
 	@Override
 	public E getById(Long primaryKey) {
-
-		return null;
+		return repositoryHelper.getById(primaryKey);
 	}
 
 	@Override

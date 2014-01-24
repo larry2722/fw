@@ -8,7 +8,10 @@
 package org.larry.fw.showcase.sys.user.service;
 
 import org.larry.fw.common.service.BaseService;
+import org.larry.fw.showcase.entity.User;
 
-public interface UserService extends BaseService {
+public interface UserService extends BaseService<User, Long> {
+
+	User getByUserName(String username);
 
 }

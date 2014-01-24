@@ -28,4 +28,8 @@ larry.li spring framework
 		4). fw-showcase
 		5). fw-codegen
 			用来生成基本项目框架结构，可采用读取数据库或者读取实体类模式生成，Dao、Service、Controller、Jsp
+			
+	changelog:
+		2014.1.24:
+			1. 添加异常基类、ResponseStatus
 </per>
