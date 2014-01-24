@@ -7,9 +7,9 @@ larry.li spring framework
 	 * Company:     LuckyStar Common Freamwork
 	 * @author:     Larry.Li  
 	 * @version:    v1.0.0
-	 * @email:		<a href="mailto:libin2722@sohu.com">libin2722@sohu.com</a>
+	 * @email:		</per><a href="mailto:libin2722@sohu.com">libin2722@sohu.com</a><per>
 	 * QQ:			33614814
-	 * @Blog:		<a href="http://www.blogjava.net/libin2722">http://www.blogjava.net/libin2722</a>
+	 * @Blog:		</per><a href="http://www.blogjava.net/libin2722">http://www.blogjava.net/libin2722</a><per>
 	 */
 	
 	1、使用maven命令创建数据库： mvn db:create
