@@ -9,6 +9,7 @@ larry.li spring framework
 	 * @version:    v1.0.0
 	 * @email:		libin2722@sohu.com
 	 * QQ:			33614814
+	 * @Blog:		http://www.blogjava.net/libin2722
 	 */
 	https://github.com/larry2722/fw
 	
