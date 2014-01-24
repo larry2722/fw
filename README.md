@@ -9,9 +9,8 @@ larry.li spring framework
 	 * @version:    v1.0.0
 	 * @email:		libin2722@sohu.com
 	 * QQ:			33614814
-	 * @Blog:		http://www.blogjava.net/libin2722
+	 * @Blog:		<a href="http://www.blogjava.net/libin2722">http://www.blogjava.net/libin2722</a>
 	 */
-	https://github.com/larry2722/fw
 	
 	1、使用maven命令创建数据库： mvn db:create
 	
