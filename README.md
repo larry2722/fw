@@ -7,7 +7,7 @@ larry.li spring framework
 	 * Company:     LuckyStar Common Freamwork
 	 * @author:     Larry.Li  
 	 * @version:    v1.0.0
-	 * @email:		libin2722@sohu.com
+	 * @email:		<a href="mailto:libin2722@sohu.com">libin2722@sohu.com</a>
 	 * QQ:			33614814
 	 * @Blog:		<a href="http://www.blogjava.net/libin2722">http://www.blogjava.net/libin2722</a>
 	 */
