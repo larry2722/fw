@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.larry.fw.module.logger.Logger;
 import org.larry.fw.module.logger.LoggerFactory;
-import org.larry.fw.module.utils.NetUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;

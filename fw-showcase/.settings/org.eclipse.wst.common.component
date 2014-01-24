@@ -9,6 +9,12 @@
         <dependent-module archiveName="fw-core-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fw-core/fw-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="fw-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fw-common/fw-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fw-extension-log-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fw-extension-log/fw-extension-log">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="fw-showcase"/>
         <property name="java-output-path" value="/fw-showcase/target/classes"/>
     </wb-module>

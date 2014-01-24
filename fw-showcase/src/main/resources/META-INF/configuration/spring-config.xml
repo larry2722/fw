@@ -103,9 +103,10 @@
         factory-class 仓库接口的实现工厂
     -->
     <!-- Spring Data Jpa配置 -->
+    <!-- repository-impl-postfix="Jpa"  这个是Dao实现类的后缀，以前我都是用Impl作为实现类的后缀的 -->
     <jpa:repositories
             base-package="org.larry.fw.**.repository"
-            repository-impl-postfix="Impl"
+            repository-impl-postfix="Jpa" 
             factory-class="org.larry.fw.common.repository.support.SimpleBaseRepositoryFactoryBean"
             entity-manager-factory-ref="entityManagerFactory"
             transaction-manager-ref="transactionManager">
@@ -195,10 +196,10 @@
     </bean> -->
     
     <!--设置BaseRepositoryImplHelper辅助类所需的entityManagerFactory-->
-    <!-- <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="staticMethod"  value="org.larry.fw.common.repository.RepositoryHelper.setEntityManagerFactory"/>
         <property name="arguments" ref="entityManagerFactory"/>
-    </bean> -->
+    </bean>
     
     <import resource="classpath:META-INF/configuration/spring-config-cache.xml"/>
     <import resource="classpath:META-INF/configuration/spring-config-task.xml"/>
