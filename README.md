@@ -10,7 +10,6 @@ larry.li spring framework
 	 * @email:		libin2722@sohu.com
 	 * QQ:			33614814
 	 */
-	
 	https://github.com/larry2722/fw
 	
 	1、使用maven命令创建数据库： mvn db:create
@@ -27,4 +26,6 @@ larry.li spring framework
 			日志管理，以后需要使用自动发现机制暴露Rest或者JMX，来在线控制日志级别以及数据文件位置、格式等，而该插件仍然是一个Jar
 			@see <a href="http://java.sun.com/j2se/1.5.0/docs/guide/jar/jar.html#Service%20Provider">JDK5.0的自动发现机制实现</a>
 		4). fw-showcase
+		5). fw-codegen
+			用来生成基本项目框架结构，可采用读取数据库或者读取实体类模式生成，Dao、Service、Controller、Jsp
 </per>
