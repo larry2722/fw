@@ -32,4 +32,8 @@ larry.li spring framework
 	changelog:
 		2014.1.24:
 			1. 添加异常基类、ResponseStatus
+		2014.1.26:
+			1. 多数据源配置
+			2. GenericDaoJpa、BaseServiceImpl
+			3. 定时任务
 </per>

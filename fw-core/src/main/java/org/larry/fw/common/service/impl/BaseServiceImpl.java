@@ -15,11 +15,13 @@ import org.larry.fw.common.entity.AbstractEntity;
 import org.larry.fw.common.service.BaseService;
 import org.larry.fw.module.logger.Logger;
 import org.larry.fw.module.logger.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class BaseServiceImpl<E extends AbstractEntity<ID>, ID extends Serializable> implements BaseService<E, ID> {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	@Autowired
 	protected GenericDao<E, ID> dao;
 	
 	@Override

@@ -10,34 +10,32 @@ package org.larry.fw.common.dao.jpa;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.larry.fw.common.dao.GenericDao;
 import org.larry.fw.common.entity.AbstractEntity;
+import org.larry.fw.common.repository.EntityManagerHelper;
 import org.larry.fw.common.repository.RepositoryHelper;
 import org.larry.fw.common.utils.ReflectUtils;
 import org.larry.fw.module.logger.Logger;
 import org.larry.fw.module.logger.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class GenericDaoJpa<E extends AbstractEntity<ID>, ID extends Serializable> implements GenericDao<E, ID> {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	// 这里可以扩展成继承EntityManager然后实现其所有方法，在其方法上扩展
-	private RepositoryHelper<E, ID> repositoryHelper;
+	private EntityManagerHelper<E, ID> repositoryHelper;
 	private Class<E> entityClass;
 	
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		entityClass = ReflectUtils.findParameterizedType(getClass(), 0);
-		repositoryHelper = new RepositoryHelper<E, ID>(entityClass);
-		logger.debug(".......");
+	protected EntityManagerHelper<E, ID> getRepositoryHelper() {
+		return this.repositoryHelper;
 	}
 	
 	@Override
 	public E getById(Long primaryKey) {
-		return repositoryHelper.getById(primaryKey);
+		logger.debug("get " + this.entityClass.getName() + " by id: " + primaryKey);
+		return repositoryHelper.find(entityClass, primaryKey);
 	}
 
 	@Override
@@ -92,4 +90,10 @@ public class GenericDaoJpa<E extends AbstractEntity<ID>, ID extends Serializable
 
 	}
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		entityClass = ReflectUtils.findParameterizedType(getClass(), 0);
+		repositoryHelper = new RepositoryHelper<E, ID>(entityClass);
+		logger.debug(".......");
+	}
 }
