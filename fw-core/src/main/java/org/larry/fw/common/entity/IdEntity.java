@@ -8,6 +8,7 @@
 package org.larry.fw.common.entity;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,6 +45,9 @@ public class IdEntity<ID extends Serializable> extends AbstractEntity<ID> {
 	@PrePersist
 	protected void prePersist() {
 		logger.debug("entity: " + getClass().getName() + ":" + getId() + " pre persist.");
+		if (id instanceof String) {
+			id = (ID) UUID.randomUUID().toString();
+		}
 	}
 
 	@PreUpdate
