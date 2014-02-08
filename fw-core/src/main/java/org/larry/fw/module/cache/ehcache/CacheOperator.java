@@ -3,7 +3,7 @@
  * Company:     LuckyStar Common Freamwork
  * @author:     Larry.Li  
  * @version:    v1.0.0
- * Create Date: 2014年1月22日 下午2:49:37
+ * Create Date: 2014年1月23日 下午10:49:37
  */
 package org.larry.fw.module.cache.ehcache;
 

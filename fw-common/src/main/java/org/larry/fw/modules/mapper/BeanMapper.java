@@ -3,7 +3,7 @@
  * Company:     LuckyStar Common Freamwork
  * @author:     Larry.Li  
  * @version:    v1.0.0
- * Create Date: 2014年1月27日 下午5:09:00
+ * Create Date: 2014年1月27日 下午9:09:00
  */
 package org.larry.fw.modules.mapper;
 

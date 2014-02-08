@@ -3,7 +3,7 @@
  * Company:     LuckyStar Common Freamwork
  * @author:     Larry.Li  
  * @version:    v1.0.0
- * Create Date: 2014年1月24日 下午5:07:10
+ * Create Date: 2014年1月23日 下午11:07:10
  */
 package org.larry.fw.showcase.sys.user.dao.jpa;
 

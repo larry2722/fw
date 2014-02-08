@@ -3,7 +3,7 @@
  * Company:     LuckyStar Common Freamwork
  * @author:     Larry.Li  
  * @version:    v1.0.0
- * Create Date: 2014年1月21日 下午3:50:17
+ * Create Date: 2014年1月23日 下午9:50:17
  */
 package org.larry.fw.showcase.entity;
 

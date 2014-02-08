@@ -3,7 +3,7 @@
  * Company:     LuckyStar Common Freamwork
  * @author:     Larry.Li  
  * @version:    v1.0.0
- * Create Date: 2014年1月29日 上午12:06:47
+ * Create Date: 2014年1月23日 下午9:06:47
  */
 package org.larry.fw.common.utils;
 
