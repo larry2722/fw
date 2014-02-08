@@ -10,7 +10,12 @@ package org.larry.fw.common.utils;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import org.larry.fw.module.logger.Logger;
+import org.larry.fw.module.logger.LoggerFactory;
+
 public class ReflectUtils {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReflectUtils.class);
 
 	/**
 	 * 得到指定类型的指定位置的泛型实参

@@ -36,6 +36,8 @@ public class RepositoryHelper<T extends AbstractEntity<ID>, ID extends Serializa
 	private Class<T> entityClass;
 	private boolean enableQueryCache = false;
 
+	public RepositoryHelper() {}
+	
 	public RepositoryHelper(Class<T> entityClass) {
 		this.entityClass = entityClass;
 		// TODO: 这里判断实体类上是否配置了缓存 自定义 annotation
@@ -203,135 +205,115 @@ public class RepositoryHelper<T extends AbstractEntity<ID>, ID extends Serializa
 
 	@Override
 	public Query createNativeQuery(String sqlString) {
-		return getEntityManager().createNamedQuery(sqlString);
+		return getEntityManager().createNativeQuery(sqlString);
 	}
 
 	@Override
 	public Query createNativeQuery(String sqlString, Class resultClass) {
-
-		return null;
+		return getEntityManager().createNativeQuery(sqlString, resultClass);
 	}
 
 	@Override
 	public Query createNativeQuery(String sqlString, String resultSetMapping) {
-
-		return null;
+		return getEntityManager().createNativeQuery(sqlString, resultSetMapping);
 	}
 
 	@Override
 	public StoredProcedureQuery createNamedStoredProcedureQuery(String name) {
-
-		return null;
+		return getEntityManager().createNamedStoredProcedureQuery(name);
 	}
 
 	@Override
 	public StoredProcedureQuery createStoredProcedureQuery(String procedureName) {
-
-		return null;
+		return getEntityManager().createStoredProcedureQuery(procedureName);
 	}
 
 	@Override
-	public StoredProcedureQuery createStoredProcedureQuery(
-			String procedureName, Class... resultClasses) {
-
-		return null;
+	public StoredProcedureQuery createStoredProcedureQuery(String procedureName, Class... resultClasses) {
+		return getEntityManager().createStoredProcedureQuery(procedureName, resultClasses);
 	}
 
 	@Override
-	public StoredProcedureQuery createStoredProcedureQuery(
-			String procedureName, String... resultSetMappings) {
-
-		return null;
+	public StoredProcedureQuery createStoredProcedureQuery(String procedureName, String... resultSetMappings) {
+		return getEntityManager().createStoredProcedureQuery(procedureName, resultSetMappings);
 	}
 
 	@Override
 	public void joinTransaction() {
-
+		getEntityManager().joinTransaction();
 	}
 
 	@Override
 	public boolean isJoinedToTransaction() {
-
-		return false;
+		return getEntityManager().isJoinedToTransaction();
 	}
 
 	@Override
 	public <T> T unwrap(Class<T> cls) {
-
-		return null;
+		return getEntityManager().unwrap(cls);
 	}
 
 	@Override
 	public Object getDelegate() {
-
-		return null;
+		return getEntityManager().getDelegate();
 	}
 
 	@Override
 	public void close() {
-
+		getEntityManager().close();
 	}
 
 	@Override
 	public boolean isOpen() {
-
-		return false;
+		return getEntityManager().isOpen();
 	}
 
 	@Override
 	public EntityTransaction getTransaction() {
-
-		return null;
+		return getEntityManager().getTransaction();
 	}
 
 	@Override
 	public EntityManagerFactory getEntityManagerFactory() {
-
-		return null;
+		return getEntityManager().getEntityManagerFactory();
 	}
 
 	@Override
 	public CriteriaBuilder getCriteriaBuilder() {
-
-		return null;
+		return getEntityManager().getCriteriaBuilder();
 	}
 
 	@Override
 	public Metamodel getMetamodel() {
-
-		return null;
+		return getEntityManager().getMetamodel();
 	}
 
 	@Override
 	public <T> EntityGraph<T> createEntityGraph(Class<T> rootType) {
-
-		return null;
+		return getEntityManager().createEntityGraph(rootType);
 	}
 
 	@Override
 	public EntityGraph<?> createEntityGraph(String graphName) {
-
-		return null;
+		return getEntityManager().createEntityGraph(graphName);
 	}
 
 	@Override
 	public EntityGraph<?> getEntityGraph(String graphName) {
-
-		return null;
+		return getEntityManager().getEntityGraph(graphName);
 	}
 
 	@Override
 	public <T> List<EntityGraph<? super T>> getEntityGraphs(Class<T> entityClass) {
-
-		return null;
+		return getEntityManager().getEntityGraphs(entityClass);
 	}
 
-	public Class<T> getEntityClass() {
-		return entityClass;
-	}
-
-	public void setEntityClass(Class<T> entityClass) {
-		this.entityClass = entityClass;
-	}
+//	public Class<T> getEntityClass() {
+//		return entityClass;
+//	}
+//
+//	public void setEntityClass(Class<T> entityClass) {
+//		this.entityClass = entityClass;
+//	}
 
 }
