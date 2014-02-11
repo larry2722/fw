@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.larry.fw</groupId>
+	<groupId>com.aicent.fw</groupId>
 	<artifactId>fw</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<url>https://github.com/larry2722/fw</url>
@@ -14,15 +14,15 @@
 
 	<modules>
 		<module>fw-core</module>
-		<module>fw-showcase</module>
 		<module>fw-extension-log</module>
 		<module>fw-common</module>
-		<module>fw-codegen</module>
+		<!-- <module>fw-codegen</module> -->
+		<!-- <module>fw-showcase</module> -->
 	</modules>
 
 	<properties>
 		<fw.encoding>UTF-8</fw.encoding>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.6</jdk.version>
 
 		<spring.version>4.0.0.RELEASE</spring.version>
 
@@ -120,6 +120,16 @@
 			<!-- 修改到磁盘的相应位置 -->
 			<url>/Users/larry/Documents/workspace_larry_fw/site</url>
 		</site>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Local Nexus Repository</name>
+			<url>http://192.168.33.79:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>http://192.168.33.79:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<repositories>
@@ -192,16 +202,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<locales>zh_CN</locales>
-					<outputEncoding>${fw.encoding}</outputEncoding>
-					<inputEncoding>${fw.encoding}</inputEncoding>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -380,21 +380,25 @@
 				<groupId>${project.groupId}</groupId>
 				<artifactId>fw-core</artifactId>
 				<version>${project.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>fw-extension-log</artifactId>
 				<version>${project.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>fw-common</artifactId>
 				<version>${project.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -765,4 +769,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<name>Larry-FW</name>
 </project>

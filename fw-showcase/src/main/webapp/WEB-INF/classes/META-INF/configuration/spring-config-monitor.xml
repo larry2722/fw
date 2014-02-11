@@ -9,7 +9,7 @@
     <bean id="druidStatInterceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"/>
 
     <aop:config>
-        <aop:advisor id="druidAdvisor" advice-ref="druidStatInterceptor" pointcut="execution(* org.larry.fw.showcase..service.*+.*(..))" />
+        <aop:advisor id="druidAdvisor" advice-ref="druidStatInterceptor" pointcut="execution(* com.aicent.fw.showcase..service.*+.*(..))" />
     </aop:config>
 
 </beans>

@@ -14,7 +14,7 @@
         <property name="configLocation" value="classpath:META-INF/configuration/cache/ehcache/ehcache_fw.xml"/>
     </bean>
     
-    <bean class="org.larry.fw.module.cache.ehcache.CacheUtils">
+    <bean class="com.aicent.fw.module.cache.ehcache.CacheUtils">
     	<property name="cacheManager" ref="ehcacheManager" />
     </bean>
 

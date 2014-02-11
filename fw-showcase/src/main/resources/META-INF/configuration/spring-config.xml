@@ -12,7 +12,7 @@
           http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
 	<!-- 扫描注解Bean -->
-	<context:component-scan base-package="org.larry.fw.showcase.dao.impl.*,org.larry.fw.showcase.service.impl.*">
+	<context:component-scan base-package="com.aicent.fw.showcase.dao.impl.*,com.aicent.fw.showcase.service.impl.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
@@ -20,9 +20,9 @@
 	<!-- 开启AOP监听 只对当前配置文件有效 -->
 	<aop:aspectj-autoproxy expose-proxy="true" />
 	
-	<bean id="dataSource" class="org.larry.fw.module.datasource.TransactionAwareDataSourceRouterProxy">
+	<bean id="dataSource" class="com.aicent.fw.module.datasource.TransactionAwareDataSourceRouterProxy">
 		<property name="targetDataSources">
-			<map key-type="org.larry.fw.module.datasource.AvailableDataSources">
+			<map key-type="com.aicent.fw.module.datasource.AvailableDataSources">
 				<entry key="DATABASE_1" value-ref="db1DataSource"/>
 				<entry key="LOG" value-ref="logDataSource"/>
 			</map>
@@ -41,7 +41,7 @@
 		</property>
 	</bean>
 	
-	<bean id="sessionTemplate" class="org.larry.fw.module.datasource.AicentSqlSessionTemplate">
+	<bean id="sessionTemplate" class="com.aicent.fw.module.datasource.AicentSqlSessionTemplate">
 	  	 <constructor-arg ref="sessionFactory" />
 	</bean>
 	
@@ -52,7 +52,7 @@
 	<!-- jpa Entity Factory 配置 -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="org.larry.fw.**.entity"/>
+        <property name="packagesToScan" value="com.aicent.fw.\*\*.entity"/>
 
         <property name="persistenceUnitName" value="${jpa.persistenceUnitName}"/>
         <property name="persistenceProvider">
@@ -105,9 +105,9 @@
     <!-- Spring Data Jpa配置 -->
     <!-- repository-impl-postfix="Jpa"  这个是Dao实现类的后缀，以前我都是用Impl作为实现类的后缀的 -->
     <jpa:repositories
-            base-package="org.larry.fw.**.repository"
+            base-package="com.aicent.fw.\*\*.repository"
             repository-impl-postfix="Jpa" 
-            factory-class="org.larry.fw.common.repository.support.SimpleBaseRepositoryFactoryBean"
+            factory-class="com.aicent.fw.common.repository.support.SimpleBaseRepositoryFactoryBean"
             entity-manager-factory-ref="entityManagerFactory"
             transaction-manager-ref="transactionManager">
 
@@ -191,13 +191,13 @@
     
     <!--设置查询字符串转换器的conversion service-->
     <!-- <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="staticMethod" value="org.larry.fw.common.entity.search.utils.SearchableConvertUtils.setConversionService"/>
+        <property name="staticMethod" value="com.aicent.fw.common.entity.search.utils.SearchableConvertUtils.setConversionService"/>
         <property name="arguments" ref="conversionService"/>
     </bean> -->
     
     <!--设置BaseRepositoryImplHelper辅助类所需的entityManagerFactory-->
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="staticMethod"  value="org.larry.fw.common.repository.RepositoryHelper.setEntityManagerFactory"/>
+        <property name="staticMethod"  value="com.aicent.fw.common.repository.RepositoryHelper.setEntityManagerFactory"/>
         <property name="arguments" ref="entityManagerFactory"/>
     </bean>
     
