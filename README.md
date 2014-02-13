@@ -36,4 +36,6 @@ larry.li spring framework
 			1. 多数据源配置
 			2. GenericDaoJpa、BaseServiceImpl
 			3. 定时任务
+		2014.2.13
+			1. 导入RCC-Backend Project
 </per>
