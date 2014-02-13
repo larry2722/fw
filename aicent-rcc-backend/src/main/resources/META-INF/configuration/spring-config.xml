@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<context:component-scan base-package="com.aicent.fw.modules.datasource, com.aicent.**.repository.jpa, com.aicent.**.service.impl, com.aicent.**.schedule">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+	
+	<aop:aspectj-autoproxy expose-proxy="true"/>
+	
+	<bean id="dataSource" class="com.aicent.fw.modules.datasource.TransactionAwareDataSourceRouterProxy">
+		<property name="targetDataSources">
+			<map key-type="com.aicent.fw.modules.datasource.AvailableDataSources">
+				<entry key="WAREHOUSE" value-ref="warehouseDataSource"/>
+				<entry key="CONFIG" value-ref="configDataSource"/>
+				<!-- <entry key="LOG" value-ref="logDataSource"/> -->
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="warehouseDataSource" />
+	</bean>
+	
+	<!-- jpa Entity Factory 配置 -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.aicent.**.entity"/>
+
+        <property name="persistenceUnitName" value="${jpa.persistenceUnitName}"/>
+        <property name="persistenceProvider">
+            <bean class="org.hibernate.ejb.HibernatePersistence"/>
+        </property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="${jpa.generateDdl}"/>
+                <property name="database" value="${jpa.database}"/>
+                <property name="databasePlatform" value="${jpa.databasePlatform}"/>
+                <property name="showSql" value="${jpa.showSql}"/>
+            </bean>
+        </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+        </property>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="javax.persistence.validation.factory" value-ref="validator"/>
+                <entry key="javax.persistence.validation.mode" value="NONE"/>
+                <entry key="hibernate.archive.autodetection" value="class"/>
+                <entry key="hibernate.query.startup_check" value="false"/>
+                <entry key="hibernate.query.substitutions" value="${hibernate.query.substitutions}"/>
+                <entry key="hibernate.default_batch_fetch_size" value="${hibernate.default_batch_fetch_size}"/>
+                <entry key="hibernate.max_fetch_depth" value="${hibernate.max_fetch_depth}"/>
+                <entry key="hibernate.generate_statistics" value="${hibernate.generate_statistics}"/>
+                <entry key="hibernate.bytecode.use_reflection_optimizer" value="${hibernate.bytecode.use_reflection_optimizer}"/>
+                <entry key="hibernate.cache.use_second_level_cache" value="${hibernate.cache.use_second_level_cache}"/>
+                <entry key="hibernate.cache.use_query_cache" value="${hibernate.cache.use_query_cache}"/>
+                <entry key="hibernate.cache.region.factory_class" value="${hibernate.cache.region.factory_class}"/>
+                <entry key="net.sf.ehcache.configurationResourceName" value="${net.sf.ehcache.configurationResourceName}"/>
+                <entry key="hibernate.cache.use_structured_entries" value="${hibernate.cache.use_structured_entries}"/>
+            </map>
+        </property>
+    </bean>
+    
+    <jpa:repositories base-package="com.aicent.rcc2.**.repository" repository-impl-postfix="Jpa" factory-class="com.aicent.rcc2.common.repository.support.SimpleBaseRepositoryFactoryBean" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"  />
+	
+    <bean id="warehouseDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${connection.url}"/>
+        <property name="username" value="${connection.username}"/>
+        <property name="password" value="${connection.password}"/>
+
+        <property name="initialSize" value="${druid.initialSize}"/>
+        <property name="minIdle" value="${druid.minIdle}"/>
+        <property name="maxActive" value="${druid.maxActive}"/>
+
+        <property name="maxWait" value="${druid.maxWait}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />
+
+        <property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />
+
+        <property name="validationQuery" value="${druid.validationQuery}" />
+        <property name="testWhileIdle" value="${druid.testWhileIdle}" />
+        <property name="testOnBorrow" value="${druid.testOnBorrow}" />
+        <property name="testOnReturn" value="${druid.testOnReturn}" />
+
+        <property name="poolPreparedStatements" value="${druid.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="${druid.maxPoolPreparedStatementPerConnectionSize}" />
+
+        <property name="filters" value="${druid.filters}" />
+    </bean>
+    
+    <bean id="configDataSource" parent="warehouseDataSource">
+    	<property name="url" value="${connection.config.url}"/>
+    	<property name="username" value="${connection.config.username}"/>
+        <property name="password" value="${connection.config.password}"/>
+    </bean>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:/META-INF/configuration/messages/messages</value>
+                <value>classpath:/META-INF/configuration/messages/validation-messages</value>
+            </list>
+        </property>
+        <property name="useCodeAsDefaultMessage" value="false"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="cacheSeconds" value="60"/>
+    </bean>
+    
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+    
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+    
+    <bean id="domainClassConverter" class="org.springframework.data.repository.support.DomainClassConverter">
+        <constructor-arg ref="conversionService"/>
+    </bean>
+    
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod"  value="com.aicent.fw.common.repository.RepositoryHelper.setEntityManagerFactory"/>
+        <property name="arguments" ref="entityManagerFactory"/>
+    </bean>
+    
+    <import resource="classpath:META-INF/configuration/spring-config-cache.xml"/>
+    <import resource="classpath:META-INF/configuration/spring-config-task.xml"/>
+	
+	<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/META-INF/configuration/environments/application.development.properties"/>	
+</beans>
