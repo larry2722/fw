@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Larry
+Implementation-Title: fw-extension-log
+Implementation-Version: 1.0.0
