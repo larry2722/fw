@@ -18,6 +18,8 @@
 		<module>fw-common</module>
 		<!-- <module>fw-codegen</module> -->
 		<!-- <module>fw-showcase</module> -->
+		
+		<module>aicent-rcc-backend</module>
 	</modules>
 
 	<properties>
