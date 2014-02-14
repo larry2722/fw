@@ -92,7 +92,7 @@ public class TaskServiceImpl extends BaseServiceImpl implements TaskService {
 				List<DailyReport> dailyReports = reportUsageTempDao.getDailyReport();
 				if (dailyReports != null && dailyReports.size() > 0) {
 					for (DailyReport dailyReport : dailyReports) {
-						// 处理临时表中数据，生成相关表(rcc_report_hourly_usage_% | rcc_report_hourly_imsi_% | rcc_report_url_%)
+						// 处理临时表中数据，生成相关表(rcc_report_hourly_usage_% | rcc_report_hourly_imsi_% | rcc_report_url_% ...)
 						generateHourlyUsage(dailyReport);
 						generateHourlyImsi(dailyReport);
 					}
@@ -214,7 +214,6 @@ public class TaskServiceImpl extends BaseServiceImpl implements TaskService {
 			logger.debug("create table " + tableName);
 			// 为 url_report月表添加主域名字段，并加索引
 			reportUrlDao.addDomainColumn(tableName);
-//			createIndex(tableName, "domain");
 		} else if(!existsColumn(tableName, "domain")) {
 			// 检查domain字段是否存在
 			reportUrlDao.addDomainColumn(tableName);
