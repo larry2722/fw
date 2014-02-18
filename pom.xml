@@ -4,6 +4,7 @@
 	<groupId>com.aicent.fw</groupId>
 	<artifactId>fw</artifactId>
 	<version>1.0.0</version>
+	<name>Aicent-FW</name>
 	<packaging>pom</packaging>
 
 	<url>https://github.com/larry2722/fw</url>
@@ -801,5 +802,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<name>Larry-FW</name>
 </project>
+
